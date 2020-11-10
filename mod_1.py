@@ -55,16 +55,28 @@ class AD:
     # exponential
     def __pow__(self, other):
         try:
-            val_div = self.val ** other.val
-            der_div = other.val * self.val**(other.val-1) * other.der + np.log(self.val) * self.val**other.val * self.der
+            if other.der > 0:
+                val_div = self.val ** other.val
+                der_div = other.val * self.val**(other.val-1) * self.der + np.log(self.val) * self.val**other.val * other.der
+            else:
+                val_div = self.val ** other.val
+                der_div = other.val * self.val**(other.val-1) * self.der
         except AttributeError:
             val_div = self.val ** other
             der_div = other*self.val**(other-1)*self.der
         
         return AD(val_div, der_div)
-
+        
+    # reverse exponential
     def __rpow__(self, other):
-        pass # TODO
+        try:
+            val_div = other.val ** self.val
+            der_div = self.val * other.val**(self.val-1) * other.der + np.log(other.val) * other.val**self.val * self.der
+        except AttributeError:
+            val_div = other ** self.val
+            der_div = np.log(other) * other**self.val * self.der
+
+        return AD(val_div, der_div)
 
     # reverse addition
     def __radd__(self, other):
@@ -150,3 +162,7 @@ class AD:
             val = -1 * self
             der = 0
         return AD(val, der)
+
+    def __repr__(self):
+        return 'AD({}, {})'.format(self.val, self.der)
+    
