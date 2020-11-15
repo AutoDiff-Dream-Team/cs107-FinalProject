@@ -23,7 +23,7 @@ class AD:
     def __mul__(self, other):
         try:
             val_add = self.val * other.val
-            der_add = self.der * other.val + other.der * self.value
+            der_add = self.der * other.val + other.der * self.val
         except AttributeError:
             val_add = self.val * other
             der_add = self.der * other
@@ -45,7 +45,7 @@ class AD:
     def __truediv__(self, other):
         try:
             val_div = self.val / other.val
-            der_div = self.der / other.der
+            der_div = self.der / other.val + (-self.val/other.val**2)*other.der
         except AttributeError:
             val_div = self.val / other
             der_div = self.der / other
@@ -101,19 +101,24 @@ class AD:
     def __rtruediv__(self, other):
         try:
             val_div = other.val / self.val
-            der_div = other.der / self.der
+            # der_div = other.der / self.der
             der_div = other.val * (-1 * (self.val ** (-2)) * self.der) + other.der * (1 / self.val)
 
         except AttributeError:
             val_div = other / self.val
-            der_div = other / self.der
-            der_div = other.val * (-1 * (self.val ** (-2)) * self.der)
+            der_div = (-other/self.val**2)*self.der
     
         return AD(val_div, der_div)
 
-    def get_values(self):
-        return self.val, self.der
+    def get_value(self):
+        return self.val
+    
+    def get_derivative(self):
+        return self.der
 
+    def get_eval(self):
+        return self.var, self.der
+        
     # sin
     def sin(self):
         try:
@@ -138,7 +143,7 @@ class AD:
     def tan(self):
         try:
             val = np.tan(self.val)
-            der = np.sec(self.val) ** 2 * self.der
+            der = (1/np.cos(self.val)) ** 2 * self.der
         except AttributeError:
             val = np.tan(self)
             der = 0
@@ -165,4 +170,6 @@ class AD:
 
     def __repr__(self):
         return 'AD({}, {})'.format(self.val, self.der)
-    
+
+    def __str__(self):
+        return 'AD({}, {})'.format(self.val, self.der)
