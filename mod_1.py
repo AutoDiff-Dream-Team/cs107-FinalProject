@@ -114,10 +114,33 @@ class AD:
         return self.val
     
     def get_derivative(self):
-        return self.der
+            return self.der
 
-    def get_eval(self):
-        return self.var, self.der
+    @staticmethod
+    def get_derivatives(args):
+        if type(args[0]) is not list and type(args[0]) is not np.array and type(args[0]) is not np.ndarray:
+            args = [args]
+        ders = []
+        for arg in args:
+            arg_der = []
+            for ad in arg:
+                arg_der.append(ad.der)
+            ders.append(arg_der)
+
+        return np.array(ders)
+
+    @staticmethod
+    def get_values(args):
+        if type(args[0]) is not list and type(args[0]) is not np.array and type(args[0]) is not np.ndarray:
+            args = [args]
+        ders = []
+        for arg in args:
+            arg_der = []
+            for ad in arg:
+                arg_der.append(ad.val)
+            ders.append(arg_der)
+
+        return np.array(ders)
         
     # sin
     def sin(self):
