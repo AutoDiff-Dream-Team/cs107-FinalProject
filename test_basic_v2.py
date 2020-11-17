@@ -89,9 +89,9 @@ def test_basic_neg_v():
     derivative = -x
     assert (float(derivative.val) == -3.0) & (float(derivative.der) == -1.0), Exception(f'test_basic_neg_v() has error.')
 
-def test_basic_sin_v(): 
-    derivative = AD.sin(x)
-    assert (float(derivative.val) == np.sin(3)) & (float(derivative.der) == np.cos(3)), Exception(f'test_basic_sin_v() has error.')
+def test_basic_neg_c(): 
+    derivative = AD.neg(2)
+    assert (float(derivative.val) == -2.0) & (float(derivative.der) == 0.0), Exception(f'test_basic_neg_c() has error.')
 
 
 def test_basic_sin_c(): 
