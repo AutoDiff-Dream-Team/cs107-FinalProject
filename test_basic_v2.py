@@ -7,7 +7,7 @@ y = AD(2, 0)
  
 def test_basic_addition_v():
     derivative = x + y
-    assert (float(derivative.val) == 5.0 & float(derivative.der) == 1.0), Exception(f'test_basic_addition_c() has error.')
+    assert ((float(derivative.val) == 5.0) & (float(derivative.der) == 1.0)), Exception(f'test_basic_addition_c() has error.')
     
 
 def test_basic_addition_c():
