@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import numpy as np
+from mod_1 import AD
 
 # Define a function that produces output that can be used in order to find the Jacobian
 def Jacobian(arr):
@@ -12,4 +14,3 @@ def Jacobian(arr):
             else:
                 output[i].append(AD(arr[i], 0))
     return np.array(output)
-
