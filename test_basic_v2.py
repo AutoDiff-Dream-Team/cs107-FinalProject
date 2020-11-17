@@ -7,7 +7,7 @@ y = AD(2, 0)
  
 def test_basic_addition_v():
     derivative = x + y
-    assert (float(derivative.get_value()) == 5.0) & (float(derivative.get_derivative() == 1.0)), Exception(f'test_basic_addition_c() has error.')
+    assert (float(derivative.get_value()) == 5.0) & (float(derivative.get_derivative()) == 1.0)), Exception(f'test_basic_addition_c() has error.')
     
 def test_basic_addition_c():
     derivative = x + 2
@@ -23,7 +23,7 @@ def test_basic_subtraction_c():
 
 def test_basic_multiplication_v():
     derivative = x * y
-    assert ((float(derivative.val) == 6.0) & (float(derivative.der) == 0.0)), Exception(f'test_basic_multiplication_v() has error.')
+    assert ((float(derivative.val) == 6.0) & (float(derivative.der) == 2.0)), Exception(f'test_basic_multiplication_v() has error.')
 
 def test_basic_multiplication_c():
     derivative = x * 2
@@ -39,18 +39,18 @@ def test_basic_div_c():
 
 def test_basic_power_v():
     derivative = x ** y
-    assert ((float(derivative.val) == 9.0) & (float(derivative.der) == 1)), Exception(f'test_basic_power_v() has error.')
+    assert ((float(derivative.val) == 9.0) & (float(derivative.der) == 6.0)), Exception(f'test_basic_power_v() has error.')
 
 def test_basic_power_c():
     derivative = x ** 2
-    assert ((float(derivative.val) == 9.0) & (float(derivative.der) == 1)), Exception(f'test_basic_power_c() has error.')
+    assert ((float(derivative.val) == 9.0) & (float(derivative.der) == 6.0)), Exception(f'test_basic_power_c() has error.')
 
 def test_basic_exponential_v():
     derivative = np.exp(x)
     assert ((float(derivative.val) == np.exp(3)) & (float(derivative.der) == np.exp(3))), Exception(f'test_basic_exponential_v() has error.')
 
 def test_basic_exponential_c():
-    derivative = np.exp(2)
+    derivative = AD.exp(2)
     assert ((float(derivative.val) == np.exp(2)) & (float(derivative.der) == np.exp(2))), Exception(f'test_basic_exponential_c() has error.')
 
 def test_basic_radd_v():
@@ -59,7 +59,7 @@ def test_basic_radd_v():
 
 def test_basic_radd_c():
     derivative = 2 + x
-    assert ((float(derivative.val)) == 5.0)  & (float(derivative.der) == 3.0), Exception(f'test_basic_radd_c() has error.')
+    assert ((float(derivative.val)) == 5.0)  & (float(derivative.der) == 1.0), Exception(f'test_basic_radd_c() has error.')
 
 def test_basic_rmul_v():
     derivative = y * x
@@ -67,7 +67,7 @@ def test_basic_rmul_v():
 
 def test_basic_rmul_c():
     derivative = 2 * x
-    assert ((float(derivative.val) == 6.0) & (float(derivative.der) == 2.0)), Exception(f'test_basic_rmul_c() has error.')
+    assert ((float(derivative.val) == 6.0) & (float(derivative.der) == 0.0)), Exception(f'test_basic_rmul_c() has error.')
 
 def test_basic_rsub_v():
     derivative = y-x
@@ -91,7 +91,7 @@ def test_basic_neg_v():
 
 
 def test_basic_neg_c(): 
-    derivative = -2
+    derivative = AD.neg(2)
     assert (float(derivative.val) == -2.0) & (float(derivative.der) == 0.0), Exception(f'test_basic_neg_c() has error.')
 
 def test_basic_sin_v(): 
@@ -114,7 +114,7 @@ def test_basic_cos_c():
 
 def test_basic_tan_v():
     derivative = AD.tan(x)
-    assert (float(derivative.val) == np.tan(3)) & (float(derivative.der) == 1/(np.cos(3))), Exception(f'test_basic_tan_v() has error.')
+    assert (float(derivative.val) == np.tan(3)) & (float(derivative.der) == 1/(np.cos(3))**2)), Exception(f'test_basic_tan_v() has error.')
 
 def test_basic_tan_c():
     derivative = AD.tan(2)
