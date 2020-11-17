@@ -15,7 +15,7 @@ def test_basic_addition_c():
 
 def test_basic_subtraction_v():
     derivative = x - y
-    assert ((float(derivative.val)) == 1.0) & (float(derivative.der) == 1.0)), Exception(f'test_basic_subtraction_v() has error.')
+    assert ((float(derivative.val)) == 1.0) & (float(derivative.der) == 1.0), Exception(f'test_basic_subtraction_v() has error.')
 
 def test_basic_subtraction_c():
     derivative = x - 2
