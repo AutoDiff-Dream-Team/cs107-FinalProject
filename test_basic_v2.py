@@ -89,31 +89,18 @@ def test_basic_neg_v():
     derivative = -x
     assert (float(derivative.val) == -3.0) & (float(derivative.der) == -1.0), Exception(f'test_basic_neg_v() has error.')
 
-def test_basic_neg_c(): 
-    derivative = AD.neg(2)
-    assert (float(derivative.val) == -2.0) & (float(derivative.der) == 0.0), Exception(f'test_basic_neg_c() has error.')
-
-
-def test_basic_sin_c(): 
-    derivative = AD.sin(2)
-    assert (float(derivative.val) == np.sin(2)) & (float(derivative.der) == 0.0), Exception(f'test_basic_sin_c() has error.')
+def test_basic_sin_v(): 
+    derivative = AD.sin(x)
+    assert (float(derivative.val) == np.sin(3)) & (float(derivative.der) == np.cos(3)), Exception(f'test_basic_sin_v() has error.')
 
 
 def test_basic_cos_v(): 
     derivative = AD.cos(x)
     assert (float(derivative.val) == np.cos(3)) & (float(derivative.der) == -np.sin(3)), Exception(f'test_basic_cos_v() has error.')
 
-def test_basic_cos_c(): 
-    derivative = AD.cos(2)
-    assert (float(derivative.val) == np.cos(2)) & (float(derivative.der) == 0.0), Exception(f'test_basic_cos_c() has error.')
-
 def test_basic_tan_v():
     derivative = AD.tan(x)
     assert (float(derivative.val) == np.tan(3)) & (float(derivative.der) == 1/(np.cos(3))**2), Exception(f'test_basic_tan_v() has error.')
-
-def test_basic_tan_c():
-    derivative = AD.tan(2)
-    assert (float(derivative.val) == np.tan(2)) & (float(derivative.der) == 0.0), Exception(f'test_basic_tan_c() has error.')
 
 def test_basic_repr():
     assert repr(x) == 'AD(3, 1)'
