@@ -49,10 +49,6 @@ def test_basic_exponential_v():
     derivative = np.exp(x)
     assert ((float(derivative.val) == np.exp(3)) & (float(derivative.der) == np.exp(3))), Exception(f'test_basic_exponential_v() has error.')
 
-def test_basic_exponential_c():
-    derivative = AD.exp(2)
-    assert ((float(derivative.val) == np.exp(2)) & (float(derivative.der) == 0.0)), Exception(f'test_basic_exponential_c() has error.')
-
 def test_basic_radd_v():
     derivative = y + x
     assert ((float(derivative.val) == 5.0) & (float(derivative.der) == 1.0)), Exception(f'test_basic_radd_v() has error.')
