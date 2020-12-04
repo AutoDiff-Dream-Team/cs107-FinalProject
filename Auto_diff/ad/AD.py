@@ -138,7 +138,6 @@ class AD:
     def cos(self):
         val = np.cos(self.val)
         der = -np.sin(self.val) * self.der
-        
         return AD(val, der)
 
     # tangent
@@ -147,6 +146,24 @@ class AD:
         der = (1/np.cos(self.val)) ** 2 * self.der
         return AD(val, der)
 
+    # hyperbolic sine
+    def sinh(self):
+        val = np.sinh(self.val)
+        der = np.cosh(self.val) * self.der
+        return AD(val, der)
+
+    # hyperbolic cosine
+    def cosh(self):
+        val = np.cosh(self.val)
+        der = np.sinh(self.val) * self.der
+        return AD(val, der)
+
+    # hyperbolic tangent
+    def tanh(self):
+        val = np.tanh(self.val)
+        der = 1/np.cosh(self.val)**2 * self.der
+        return AD(val, der)
+    
     # exponential
     def exp(self):
         val = np.exp(self.val)
