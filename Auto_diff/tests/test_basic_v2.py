@@ -250,9 +250,9 @@ def test_basic_logistic_v():
 
 def test_basic_repr():
     x = FD(3, 1)
-    assert repr(x) == 'AD(3, 1)'
+    assert repr(x) == 'FD(3, 1)'
 
 
 def test_basic_str():
     x = FD(3, 1)
-    assert str(x) == 'AD(3, 1)'
+    assert str(x) == 'FD(3, 1)'
