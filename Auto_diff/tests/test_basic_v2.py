@@ -45,21 +45,22 @@ def test_basic_div_c():
     derivative = x / 2
     assert ((float(derivative.val) == 1.50) & (float(derivative.der) == 0.5)), Exception(f'test_basic_div_c() has error.')
 
-def test_basic_power_v():
+def test_basic_power_v1():
     x = FD(3, 1)
     y = FD(2, 0)
     derivative = x ** y
-    assert ((float(derivative.val) == 9.0) & (float(derivative.der) == 6.0)), Exception(f'test_basic_power_v() has error.')
+    assert ((float(derivative.val) == 9.0) & (float(derivative.der) == 6.0)), Exception(f'test_basic_power_v1() has error.')
 
-def test_basic_power_c1():
+def test_basic_power_c():
     x = FD(3, 1)
     derivative = x ** 2
     assert ((float(derivative.val) == 9.0) & (float(derivative.der) == 6.0)), Exception(f'test_basic_power_c() has error.')
 
-def test_basic_power_c2():
+def test_basic_power_v2():
     x = FD(-1, 1)
-    derivative = x ** 2
-    assert ((float(derivative.val) == 1) & (float(derivative.der) == -2)), Exception(f'test_basic_power_c() has error.')
+    y = FD(2, 1)
+    derivative = x ** y
+    assert ((float(derivative.val) == 1) & (float(derivative.der) == -2)), Exception(f'test_basic_power_v2() has error.')
 
 def test_basic_exponential_v():
     x = FD(3, 1)
