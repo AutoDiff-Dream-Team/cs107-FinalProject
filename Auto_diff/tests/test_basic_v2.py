@@ -152,70 +152,70 @@ def test_basic_neg_v():
 
 def test_basic_sin_v():
     x = FD(3, 1)
-    derivative = AD.sin(x)
+    derivative = FD.sin(x)
     assert (float(derivative.val) == np.sin(3)) & (float(derivative.der) == np.cos(3)), Exception(
         f'test_basic_sin_v() has error.')
 
 
 def test_basic_cos_v():
-    x = AD(3, 1)
-    derivative = AD.cos(x)
+    x = FD(3, 1)
+    derivative = FD.cos(x)
     assert (float(derivative.val) == np.cos(3)) & (float(derivative.der) == -np.sin(3)), Exception(
         f'test_basic_cos_v() has error.')
 
 
 def test_basic_tan_v():
     x = FD(3, 1)
-    derivative = AD.tan(x)
+    derivative = FD.tan(x)
     assert (float(derivative.val) == np.tan(3)) & (float(derivative.der) == 1 / (np.cos(3)) ** 2), Exception(
         f'test_basic_tan_v() has error.')
 
 
 def test_basic_arcsin_v():
     x = FD(0.5, 1)
-    derivative = AD.arcsin(x)
+    derivative = FD.arcsin(x)
     assert (float(derivative.val) == np.arcsin(0.5)) & (float(derivative.der) == 1 / np.sqrt(1 - 0.5 ** 2)), Exception(
         f'test_basic_arcsin_v() has error.')
 
 
 def test_basic_arccos_v():
     x = FD(0.5, 1)
-    derivative = AD.arccos(x)
+    derivative = FD.arccos(x)
     assert (float(derivative.val) == np.arccos(0.5)) & (float(derivative.der) == -1 / np.sqrt(1 - 0.5 ** 2)), Exception(
         f'test_basic_arccos_v() has error.')
 
 
 def test_basic_arctan_v():
     x = FD(3, 1)
-    derivative = AD.arctan(x)
+    derivative = FD.arctan(x)
     assert (float(derivative.val) == np.arctan(3)) & (float(derivative.der) == 1 / (1 + 3 ** 2)), Exception(
         f'test_basic_arctan_v() has error.')
 
 
 def test_basic_sinh_v():
     x = FD(3, 1)
-    derivative = AD.sinh(x)
+    derivative = FD.sinh(x)
     assert (float(derivative.val) == np.sinh(3)) & (float(derivative.der) == np.cosh(3)), Exception(
         f'test_basic_sinh_v() has error.')
 
 
 def test_basic_cosh_v():
     x = FD(3, 1)
-    derivative = AD.cosh(x)
+    derivative = FD.cosh(x)
     assert (float(derivative.val) == np.cosh(3)) & (float(derivative.der) == np.sinh(3)), Exception(
         f'test_basic_cosh_v() has error.')
 
 
 def test_basic_tanh_v():
     x = FD(3, 1)
-    derivative = AD.tanh(x)
+    derivative = FD.tanh(x)
     assert (float(derivative.val) == np.tanh(3)) & (float(derivative.der) == 1 / np.cosh(3) ** 2), Exception(
         f'test_basic_tanh_v() has error.')
 
 
 def test_basic_sqrt_v():
     x = FD(3, 1)
-    derivative = AD.sqrt(x)
+    derivative = FD.sqrt(x)
     assert (float(derivative.val) == np.sqrt(3)) & (float(derivative.der) == 0.5 * 3 ** (-0.5)), Exception(
         f'test_basic_sqrt_v() has error.')
 
@@ -234,14 +234,14 @@ def test_basic_ne_v():
 
 def test_basic_logarithm_v():
     x = FD(3, 1)
-    derivative = AD.logarithm(x, np.e)
+    derivative = FD.logarithm(x, np.e)
     assert (float(derivative.val) == np.log(3)) & (float(derivative.der) == 1 / 3), Exception(
         f'test_basic_logarithm_v() has error.')
 
 
 def test_basic_logistic_v():
     x = FD(3, 1)
-    derivative = AD.logistic(x)
+    derivative = FD.logistic(x)
     assert (float(derivative.val) == 1 / (1 + np.e ** (-3))) & (
                 float(derivative.der) == (np.e ** (3)) / (1 + np.e ** (3)) ** 2), Exception(
         f'test_basic_logistic_v() has error.')
