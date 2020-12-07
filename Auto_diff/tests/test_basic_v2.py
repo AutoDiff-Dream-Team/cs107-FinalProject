@@ -1,9 +1,9 @@
+from Auto_diff import FD
 import numpy as np
-from Auto_diff import AD
 
 
-x = AD(3, 1)
-y = AD(2, 0)
+x = FD(3, 1)
+y = FD(2, 0)
  
 def test_basic_addition_v():
     derivative = x + y
@@ -86,20 +86,19 @@ def test_basic_neg_v():
     assert (float(derivative.val) == -3.0) & (float(derivative.der) == -1.0), Exception(f'test_basic_neg_v() has error.')
 
 def test_basic_sin_v(): 
-    derivative = AD.sin(x)
+    derivative = FD.sin(x)
     assert (float(derivative.val) == np.sin(3)) & (float(derivative.der) == np.cos(3)), Exception(f'test_basic_sin_v() has error.')
 
-
 def test_basic_cos_v(): 
-    derivative = AD.cos(x)
+    derivative = FD.cos(x)
     assert (float(derivative.val) == np.cos(3)) & (float(derivative.der) == -np.sin(3)), Exception(f'test_basic_cos_v() has error.')
 
 def test_basic_tan_v():
-    derivative = AD.tan(x)
+    derivative = FD.tan(x)
     assert (float(derivative.val) == np.tan(3)) & (float(derivative.der) == 1/(np.cos(3))**2), Exception(f'test_basic_tan_v() has error.')
 
 def test_basic_repr():
-    assert repr(x) == 'AD(3, 1)'
+    assert repr(x) == 'FD(3, 1)'
 
 def test_basic_str():
-    assert str(x) == 'AD(3, 1)'
+    assert str(x) == 'FD(3, 1)'

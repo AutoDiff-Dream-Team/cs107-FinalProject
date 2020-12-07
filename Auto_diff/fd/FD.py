@@ -1,7 +1,7 @@
 import numpy as np
 
 
-class AD:
+class FD:
     
     # initialize with input value
     def __init__(self, val=1, der=1):
@@ -17,7 +17,7 @@ class AD:
             val_add = self.val + other
             der_add = self.der
 
-        return AD(val_add, der_add)
+        return FD(val_add, der_add)
 
     # multiplication
     def __mul__(self, other):
@@ -28,7 +28,7 @@ class AD:
             val_add = self.val * other
             der_add = self.der * other
 
-        return AD(val_add, der_add)
+        return FD(val_add, der_add)
 
     # subtraction
     def __sub__(self, other):
@@ -39,7 +39,7 @@ class AD:
             val_sub = self.val - other
             der_sub = self.der
 
-        return AD(val_sub, der_sub)
+        return FD(val_sub, der_sub)
 
     # division
     def __truediv__(self, other):
@@ -50,7 +50,7 @@ class AD:
             val_div = self.val / other
             der_div = self.der / other
         
-        return AD(val_div, der_div)
+        return FD(val_div, der_div)
 
     # exponential
     def __pow__(self, other):
@@ -65,14 +65,14 @@ class AD:
             val_div = self.val ** other
             der_div = other*self.val**(other-1)*self.der
         
-        return AD(val_div, der_div)
+        return FD(val_div, der_div)
         
     # reverse exponential
     def __rpow__(self, other):
         val_div = other ** self.val
         der_div = np.log(other) * other**self.val * self.der
 
-        return AD(val_div, der_div)
+        return FD(val_div, der_div)
 
     # reverse addition
     def __radd__(self, other):
@@ -87,14 +87,14 @@ class AD:
         val_sub =  other - self.val
         der_sub = -self.der
 
-        return AD(val_sub, der_sub)
+        return FD(val_sub, der_sub)
 
     # reverse division
     def __rtruediv__(self, other):
         val_div = other / self.val
         der_div = (-other/self.val**2)*self.der
     
-        return AD(val_div, der_div)
+        return FD(val_div, der_div)
 
     def get_value(self):
         return self.val
@@ -132,51 +132,51 @@ class AD:
     def sin(self):
         val = np.sin(self.val)
         der = np.cos(self.val) * self.der
-        return AD(val, der)
+        return FD(val, der)
 
     # cos
     def cos(self):
         val = np.cos(self.val)
         der = -np.sin(self.val) * self.der
-        return AD(val, der)
+        return FD(val, der)
 
     # tangent
     def tan(self):
         val = np.tan(self.val)
         der = (1/np.cos(self.val)) ** 2 * self.der
-        return AD(val, der)
+        return FD(val, der)
 
     # hyperbolic sine
     def sinh(self):
         val = np.sinh(self.val)
         der = np.cosh(self.val) * self.der
-        return AD(val, der)
+        return FD(val, der)
 
     # hyperbolic cosine
     def cosh(self):
         val = np.cosh(self.val)
         der = np.sinh(self.val) * self.der
-        return AD(val, der)
+        return FD(val, der)
 
     # hyperbolic tangent
     def tanh(self):
         val = np.tanh(self.val)
         der = 1/np.cosh(self.val)**2 * self.der
-        return AD(val, der)
+        return FD(val, der)
     
     # exponential
     def exp(self):
         val = np.exp(self.val)
         der = np.exp(self.val) * self.der
-        return AD(val, der)
+        return FD(val, der)
 
     def __neg__(self):
         val = -1 * self.val
         der = -1 * self.der
-        return AD(val, der)
+        return FD(val, der)
 
     def __repr__(self):
-        return 'AD({}, {})'.format(self.val, self.der)
+        return 'FD({}, {})'.format(self.val, self.der)
 
     def __str__(self):
-        return 'AD({}, {})'.format(self.val, self.der)
+        return 'FD({}, {})'.format(self.val, self.der)
