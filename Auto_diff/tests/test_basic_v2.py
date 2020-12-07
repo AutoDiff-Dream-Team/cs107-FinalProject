@@ -1,4 +1,4 @@
-from mod_1 import FD
+from Auto_diff import FD
 import numpy as np
 
 from mod_1 import FD
