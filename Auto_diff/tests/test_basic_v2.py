@@ -1,8 +1,5 @@
 from Auto_diff import FD
 import numpy as np
-
-from mod_1 import FD
-
  
 def test_basic_addition_v():
     x = FD(3, 1)
