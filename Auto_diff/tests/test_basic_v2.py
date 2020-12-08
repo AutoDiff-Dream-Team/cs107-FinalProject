@@ -177,14 +177,21 @@ def test_basic_ne_v():
 
 def test_basic_logarithm_v():
     x = FD(3, 1)
+    y = FD(2, 2)
     derivative = FD.logarithm(x, np.e)
     assert (float(derivative.val) == np.log(3)) & (float(derivative.der) == 1/3), Exception(f'test_basic_logarithm_v() has error.')
+    derivative2 = FD.logarithm([x,y], base = np.e)
+    assert (float(derivative2[1].val) == np.log(2)) & (float(derivative2[1].der) == 1), Exception(f'test_basic_logarithm_v() has error.')
+
 
 def test_basic_logistic_v():
     x = FD(3, 1)
+    y = FD(2, 2)
     derivative = FD.logistic(x)
     assert (float(derivative.val) == 1/(1 + np.e**(-3))) & (float(derivative.der) == (np.e**(3))/(1 + np.e**(3))**2), Exception(f'test_basic_logistic_v() has error.')
-    # Define the logistic function that the user will use
+    derivative2 = FD.logistic([x,y])
+    assert (float(derivative2[1].val) == 1/(1 + np.e**(-2))) & (float(derivative2[1].der) == 2 * (np.e**(2))/(1 + np.e**(2))**2), Exception(f'test_basic_logistic_v() has error.')
+
 
 def test_basic_repr():
     x = FD(3, 1)
