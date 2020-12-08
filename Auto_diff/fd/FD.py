@@ -232,13 +232,31 @@ class FD:
         return 'FD({}, {})'.format(self.val, self.der)
 
     # the generic log function
-    def logarithm(self, base):
-        val = np.log(self.val) / np.log(base)
-        der = 1 / (self.val * np.log(base)) * self.der
-        return FD(val, der)
+    @staticmethod
+    def logarithm(args, base):
+        if type(args) is not list and type(args) is not np.array and type(args) is not np.ndarray:
+            val = np.log(args.val) / np.log(base)
+            der = 1 / (args.val * np.log(base)) * args.der
+            return FD(val, der)
+        else:
+            output_list = []
+            for object in args:
+                val = np.log(object.val) / np.log(base)
+                der = 1 / (object.val * np.log(base)) * object.der
+                output_list.append(FD(val, der))
+            return np.array(output_list).reshape(-1, )
 
     # the logistic function
-    def logistic(self):
-        val = 1 / (1 + np.exp(1) ** (-self.val))
-        der = (np.exp(1) ** (self.val)) / (1 + np.exp(1) ** (self.val)) ** 2 * self.der
-        return FD(val, der)
+    @staticmethod
+    def logistic(args):
+        if type(args) is not list and type(args) is not np.array and type(args) is not np.ndarray:
+            val = 1 / (1 + np.exp(1) ** (-args.val))
+            der = (np.exp(1) ** (args.val)) / (1 + np.exp(1) ** (args.val)) ** 2 * args.der
+            return FD(val, der)
+        else:
+            output_list = []
+            for arg in args:
+                val = 1 / (1 + np.exp(1) ** (-arg.val))
+                der = (np.exp(1) ** (arg.val)) / (1 + np.exp(1) ** (arg.val)) ** 2 * arg.der
+                output_list.append(FD(val, der))
+            return np.array(output_list).reshape(-1, )
