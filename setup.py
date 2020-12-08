@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 # To complete
 setuptools.setup(
     name="iamautodiff", # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="AC 207 Group 24 (Diego | Nishu | Victor | Yuxin)",
     author_email="nlahoti@mde.harvard.edu",
     description="A package for forward and reverse automatic differentiation",
