@@ -12,6 +12,10 @@
 
 Automatic differentiation (AD) encompasses a suite of tools used to compute the derivatives of functions, evaluate the functions at specified values, and evaluate the functions' derivates at specified values. In a situation where analytically deriving the derivative of compicated functions is not feasible (within the user's limitations), AD guarantees to return the exact solution in theory. In practice, rounding errors may compound given that AD performs a series of elementary operations.  
 
+### Documentation
+---
+
+For documentation and how-to-use, please reiew our [documentation notebook](https://github.com/AutoDiff-Dream-Team/cs107-FinalProject/blob/master/docs/documentation.ipynb).
 
 ### Modules
 ---
